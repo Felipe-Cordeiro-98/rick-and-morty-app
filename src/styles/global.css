@@ -4,22 +4,36 @@
     --breakpoint-xs: 21.25rem;
 }
 
+body {
+    color: #313234;
+    background-color: #ffffff;
+}
+
 .btn {
     display: flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.5rem 1rem;
     border-radius: 24px;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
     cursor: pointer;
 }
 
 .btn-primary {
     color: #ffffff;
     background-color: #11b0c8;
-    border: none;
-    transition: background-color 0.3s ease-in-out;
 }
 
 .btn-primary:hover {
     background-color: #11b0c8cc;
+}
+
+.btn-secondary {
+    color: #ffffff;
+    background-color: #313234;
+}
+
+.btn-secondary:hover {
+    background-color: #313234cc;
 }
