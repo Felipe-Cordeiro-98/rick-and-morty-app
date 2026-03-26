@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+@theme {
+    --breakpoint-xs: 21.25rem;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+.btn-primary {
+    color: #ffffff;
+    background-color: #11b0c8;
+    border: none;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #11b0c8cc;
+}
