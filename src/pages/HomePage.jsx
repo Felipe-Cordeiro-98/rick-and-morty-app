@@ -3,12 +3,15 @@ import { useTheme } from "../contexts/ThemeContext";
 
 import Header from "../components/Header";
 import IconButton from "../components/IconButton";
+import InputSearch from "../components/InputSearch";
 
 import rickAndMortyLight from "../assets/rick-and-morty-light.png";
 import rickAndMortyDark from "../assets/rick-and-morty-dark.png";
 import iconMoonLight from "../assets/icon-moon-light.svg";
 import iconMoonDark from "../assets/icon-moon-dark.svg";
 import iconSun from "../assets/icon-sun.svg";
+import iconSquare from "../assets/icon-square-four.svg";
+import CharacterCard from "../components/CharacterCard";
 
 export default function HomePage() {
     useDocumentTitle("Página Inicial");
@@ -69,12 +72,66 @@ export default function HomePage() {
                     </div>
                 </section>
 
-                <section 
-                    className={`min-h-screen 
-                        ${theme === "dark" && "bg-[#313234]"}
-                    `}>
+                <div
+                    className={`min-h-screen p-4 
+                        ${theme === "dark" && "bg-[#1e1e20]"}
+                    `}
+                >
+                    {/* input search and filters */}
+                    <div className="mb-5">
+                        <InputSearch placeholder="Personagem, episódio, localização..." />
+                    </div>
 
-                </section>
+                    {/* characters */}
+                    <section>
+                        <div className="flex items-center gap-4 mb-5">
+                            <h3 className="text-xl text-white">Personagens</h3>
+                            <IconButton
+                                icon={iconSquare}
+                                label="Ver todos"
+                                color="btn-secondary"
+                                onClick={() => alert("Mostrar personagens")}
+                            />
+                        </div>
+
+                        {/* cards */}
+                        <div>
+                            <CharacterCard />
+                        </div>
+                    </section>
+
+                    {/* episodes */}
+                    <section>
+                        <div className="flex items-center gap-4">
+                            <h3 className="text-xl text-white">Episódios</h3>
+                            <IconButton
+                                icon={iconSquare}
+                                label="Ver todos"
+                                color="btn-secondary"
+                                onClick={() => alert("Mostrar episódeos")}
+                            />
+                        </div>
+
+                        {/* cards */}
+                        <div></div>
+                    </section>
+
+                    {/* locations */}
+                    <section>
+                        <div className="flex items-center gap-4">
+                            <h3 className="text-xl text-white">Localizações</h3>
+                            <IconButton
+                                icon={iconSquare}
+                                label="Ver todos"
+                                color="btn-secondary"
+                                onClick={() => alert("Mostrar localizações")}
+                            />
+                        </div>
+
+                        {/* cards */}
+                        <div></div>
+                    </section>
+                </div>
             </main>
         </>
     );
