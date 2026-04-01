@@ -13,9 +13,28 @@ import iconSun from "../assets/icon-sun.svg";
 import iconSquare from "../assets/icon-square-four.svg";
 import CharacterCard from "../components/CharacterCard";
 
+import { useEffect, useState } from "react";
+import { getCharacters } from "../services/characterService";
+
 export default function HomePage() {
     useDocumentTitle("Página Inicial");
     const { theme, toggleTheme } = useTheme();
+
+    const [characters, setCharacters] = useState([]);
+    const [erro, setErro] = useState(false);
+
+    useEffect(() => {
+        const fetchCharacter = async () => {
+            try {
+                const data = await getCharacters();
+                setCharacters(data.results);
+            } catch (error) {
+                setErro(true);
+            }
+        };
+
+        fetchCharacter();
+    }, []);
 
     return (
         <>
@@ -95,8 +114,10 @@ export default function HomePage() {
                         </div>
 
                         {/* cards */}
-                        <div>
-                            <CharacterCard />
+                        <div className="grid grid-cols-1 gap-4">
+                            {characters.slice(0, 4).map((character) => (
+                                <CharacterCard key={character.id} character={character} />
+                            ))}
                         </div>
                     </section>
 
