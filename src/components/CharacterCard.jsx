@@ -11,9 +11,7 @@ import IconPlanet from "../assets/icon-planet.svg?react";
 import iconHeart from "../assets/icon-heart.svg";
 import iconHeartSelected from "../assets/icon-heart-selected.svg";
 
-import rick from "../assets/rick-sanchez.png";
-
-export default function CharacterCard() {
+export default function CharacterCard({ character }) {
     const { theme } = useTheme();
     const isLight = theme === "light";
 
@@ -27,7 +25,7 @@ export default function CharacterCard() {
         >
             {/* character image */}
             <div className="w-full mb-4 rounded-2xl overflow-hidden">
-                <img className="w-full h-auto" src={rick} alt="Rick Sanchez" />
+                <img className="w-full h-auto" src={character.image} alt="Rick Sanchez" />
             </div>
 
             {/* info */}
@@ -39,19 +37,19 @@ export default function CharacterCard() {
                         alt=""
                     />
                 </button>
-                <h3 className={`text-xl font-bold mb-4 ${isLight ? "text-[#313234]" : "text-white"}`}>Rick Sanchez</h3>
+                <h3 className={`text-xl font-bold mb-4 ${isLight ? "text-[#313234]" : "text-white"}`}>{character.name}</h3>
                 <div>
                     <div className="flex items-center gap-2">
                         <IconPulse />
-                        <span className={`${isLight ? "text-[#313234]" : "text-white"}`}>Vivo</span>
+                        <span className={`${isLight ? "text-[#313234]" : "text-white"}`}>{character.status}</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <IconAlien className={`${isLight ? "text-[#313234]" : "text-white"}`} />
-                        <span className={`${isLight ? "text-[#313234]" : "text-white"}`}>Humano</span>
+                        <span className={`${isLight ? "text-[#313234]" : "text-white"}`}>{character.species}</span>
                     </div>
                     <div className="flex items-center gap-2">
                         <IconPlanet className={`${isLight ? "text-[#313234]" : "text-white"}`} />
-                        <span className={`${isLight ? "text-[#313234]" : "text-white"}`}>Earth (C-137)</span>
+                        <span className={`${isLight ? "text-[#313234]" : "text-white"}`}>{character.origin.name}</span>
                     </div>
                 </div>
             </div>
