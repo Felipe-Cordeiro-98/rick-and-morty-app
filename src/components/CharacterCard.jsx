@@ -22,17 +22,21 @@ export default function CharacterCard({ character }) {
         <div className={`card ${isLight ? "card-light" : "card-dark"}`}>
             {/* character image */}
             <div className="w-full aspect-square mb-4 rounded-2xl overflow-hidden bg-gray-100">
-                <img className="w-full h-full object-contain" src={character.image} alt={character.name} />
+                <img className="w-full h-full object-cover" src={character.image} alt={character.name} />
             </div>
 
             {/* info */}
             <div className="relative mb-6">
                 {/* favorite button */}
-                <button className="absolute top-0 right-0" onClick={() => setIsFavorite(!isFavorite)}>
+                <button
+                    className="absolute top-0 right-0"
+                    aria-label="Favoritar personagem"
+                    onClick={() => setIsFavorite(!isFavorite)}
+                >
                     <img className="btn-favorite" src={isFavorite ? iconHeartSelected : iconHeart} alt="" />
                 </button>
                 {/* character name */}
-                <h3 className={`text-xl font-bold mb-4 ${textStyle}`}>{character.name}</h3>
+                <h3 className={`text-xl font-bold mb-4 truncate ${textStyle}`}>{character.name}</h3>
                 {/* character status */}
                 <div>
                     {/* status */}
