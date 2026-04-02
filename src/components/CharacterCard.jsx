@@ -14,42 +14,41 @@ import iconHeartSelected from "../assets/icon-heart-selected.svg";
 export default function CharacterCard({ character }) {
     const { theme } = useTheme();
     const isLight = theme === "light";
+    const textStyle = isLight ? "text-secondary" : "text-white";
 
     const [isFavorite, setIsFavorite] = useState(false);
 
     return (
-        <div
-            className={`w-full p-4 rounded-xl transition-colors duration-300
-                ${isLight ? "bg-[#f9f9f9] hover:bg-[#f1f1f1]" : "bg-[#1a1a1a] hover:bg-[#313234]"}
-            `}
-        >
+        <div className={`card ${isLight ? "card-light" : "card-dark"}`}>
             {/* character image */}
-            <div className="w-full mb-4 rounded-2xl overflow-hidden">
-                <img className="w-full h-auto" src={character.image} alt="Rick Sanchez" />
+            <div className="w-full aspect-square mb-4 rounded-2xl overflow-hidden bg-gray-100">
+                <img className="w-full h-full object-contain" src={character.image} alt={character.name} />
             </div>
 
             {/* info */}
             <div className="relative mb-6">
+                {/* favorite button */}
                 <button className="absolute top-0 right-0" onClick={() => setIsFavorite(!isFavorite)}>
-                    <img
-                        className={`transition-transform duration-150 active:scale-125`}
-                        src={isFavorite ? iconHeartSelected : iconHeart}
-                        alt=""
-                    />
+                    <img className="btn-favorite" src={isFavorite ? iconHeartSelected : iconHeart} alt="" />
                 </button>
-                <h3 className={`text-xl font-bold mb-4 ${isLight ? "text-[#313234]" : "text-white"}`}>{character.name}</h3>
+                {/* character name */}
+                <h3 className={`text-xl font-bold mb-4 ${textStyle}`}>{character.name}</h3>
+                {/* character status */}
                 <div>
+                    {/* status */}
                     <div className="flex items-center gap-2">
                         <IconPulse />
-                        <span className={`${isLight ? "text-[#313234]" : "text-white"}`}>{character.status}</span>
+                        <span className={`${textStyle}`}>{character.status}</span>
                     </div>
+                    {/* specie */}
                     <div className="flex items-center gap-2">
-                        <IconAlien className={`${isLight ? "text-[#313234]" : "text-white"}`} />
-                        <span className={`${isLight ? "text-[#313234]" : "text-white"}`}>{character.species}</span>
+                        <IconAlien className={`${textStyle}`} />
+                        <span className={`${textStyle}`}>{character.species}</span>
                     </div>
+                    {/* origin */}
                     <div className="flex items-center gap-2">
-                        <IconPlanet className={`${isLight ? "text-[#313234]" : "text-white"}`} />
-                        <span className={`${isLight ? "text-[#313234]" : "text-white"}`}>{character.origin.name}</span>
+                        <IconPlanet className={`${textStyle}`} />
+                        <span className={`${textStyle}`}>{character.origin.name}</span>
                     </div>
                 </div>
             </div>
@@ -59,7 +58,7 @@ export default function CharacterCard({ character }) {
                 <IconButton
                     icon={iconInfo}
                     label="Saiba mais"
-                    color={`${isLight ? "btn-primary" : "btn-secondary"}`}
+                    color={`${isLight ? "btn-primary" : "btn-tertiary"}`}
                     onClick={() => alert("Informações sobre personagem")}
                 />
             </div>
