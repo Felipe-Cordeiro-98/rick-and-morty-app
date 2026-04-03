@@ -42,17 +42,17 @@ export default function CharacterCard({ character }) {
                     {/* status */}
                     <div className="flex items-center gap-2">
                         <IconPulse />
-                        <span className={`${textStyle}`}>{character.status}</span>
+                        <span className={`truncate ${textStyle}`}>{character.status}</span>
                     </div>
                     {/* specie */}
                     <div className="flex items-center gap-2">
                         <IconAlien className={`${textStyle}`} />
-                        <span className={`${textStyle}`}>{character.species}</span>
+                        <span className={`truncate ${textStyle}`}>{character.species}</span>
                     </div>
                     {/* origin */}
                     <div className="flex items-center gap-2">
                         <IconPlanet className={`${textStyle}`} />
-                        <span className={`${textStyle}`}>{character.origin.name}</span>
+                        <span className={`truncate ${textStyle}`}>{character.origin.name}</span>
                     </div>
                 </div>
             </div>
