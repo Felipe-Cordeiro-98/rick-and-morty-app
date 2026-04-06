@@ -2,6 +2,8 @@
 
 @theme {
     --breakpoint-xs: 21.25rem;
+    --color-primary: #11b0c8;
+    --color-secondary: #313234;
 }
 
 body {
@@ -9,6 +11,7 @@ body {
     background-color: #ffffff;
 }
 
+/* button */
 .btn {
     display: flex;
     align-items: center;
@@ -20,20 +23,54 @@ body {
     cursor: pointer;
 }
 
-.btn-primary {
+.btn-primary,
+.btn-secondary,
+.btn-tertiary {
     color: #ffffff;
+}
+
+.btn-primary {
     background-color: #11b0c8;
+}
+
+.btn-secondary,
+.btn-tertiary {
+    background-color: #313234;
 }
 
 .btn-primary:hover {
     background-color: #11b0c8cc;
 }
 
-.btn-secondary {
-    color: #ffffff;
-    background-color: #313234;
-}
-
 .btn-secondary:hover {
     background-color: #313234cc;
+}
+
+.btn-tertiary:hover {
+    background-color: #11b0c8;
+}
+
+/* card  */
+
+.card {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    transition: all 300ms ease-in-out;
+}
+
+.card-light {
+    background-color: #f9f9f9;
+}
+
+.card-dark {
+    background-color: #1a1a1a;
+}
+
+.card-light:hover {
+    background-color: #f1f1f1;
+}
+
+.card-dark:hover {
+    background-color: #313234;
 }
