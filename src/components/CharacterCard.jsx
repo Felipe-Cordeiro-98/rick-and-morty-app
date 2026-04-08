@@ -2,14 +2,12 @@ import { useState } from "react";
 import { useTheme } from "../contexts/ThemeContext";
 
 import IconButton from "./IconButton";
+import FavoriteButton from "./FavoriteButton";
 
 import iconInfo from "../assets/icon-info.svg";
 import IconPulse from "../assets/icon-pulse.svg?react";
 import IconAlien from "../assets/icon-alien.svg?react";
 import IconPlanet from "../assets/icon-planet.svg?react";
-
-import iconHeart from "../assets/icon-heart.svg";
-import iconHeartSelected from "../assets/icon-heart-selected.svg";
 
 export default function CharacterCard({ character }) {
     const { theme } = useTheme();
@@ -28,13 +26,11 @@ export default function CharacterCard({ character }) {
             {/* info */}
             <div className="relative mb-6">
                 {/* favorite button */}
-                <button
+                <FavoriteButton
+                    isFavorite={isFavorite}
+                    toggleFavorite={() => setIsFavorite(!isFavorite)}
                     className="absolute top-0 right-0"
-                    aria-label="Favoritar personagem"
-                    onClick={() => setIsFavorite(!isFavorite)}
-                >
-                    <img className="btn-favorite" src={isFavorite ? iconHeartSelected : iconHeart} alt="" />
-                </button>
+                />
                 {/* character name */}
                 <h3 className={`text-xl font-bold mb-4 truncate ${textStyle}`}>{character.name}</h3>
                 {/* character status */}
@@ -46,12 +42,12 @@ export default function CharacterCard({ character }) {
                     </div>
                     {/* specie */}
                     <div className="flex items-center gap-2">
-                        <IconAlien className={`${textStyle}`} />
+                        <IconAlien className={textStyle} />
                         <span className={`truncate ${textStyle}`}>{character.species}</span>
                     </div>
                     {/* origin */}
                     <div className="flex items-center gap-2">
-                        <IconPlanet className={`${textStyle}`} />
+                        <IconPlanet className={textStyle} />
                         <span className={`truncate ${textStyle}`}>{character.origin.name}</span>
                     </div>
                 </div>
@@ -62,7 +58,7 @@ export default function CharacterCard({ character }) {
                 <IconButton
                     icon={iconInfo}
                     label="Saiba mais"
-                    color={`${isLight ? "btn-primary" : "btn-tertiary"}`}
+                    color={isLight ? "btn-primary" : "btn-tertiary"}
                     onClick={() => alert("Informações sobre personagem")}
                 />
             </div>
